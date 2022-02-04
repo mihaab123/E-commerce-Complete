@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/size_config.dart';
 
-import '../../../constants.dart';
+import '../../../utils.dart';
 
 class OtpForm extends StatefulWidget {
   const OtpForm({
@@ -108,7 +108,7 @@ class _OtpFormState extends State<OtpForm> {
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           DefaultButton(
-            text: "Continue",
+            text: "BTN_continue".tr,
             press: () {},
           )
         ],

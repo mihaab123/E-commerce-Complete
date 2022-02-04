@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shop_app/utils.dart';
 import 'components/body.dart';
 
 class LoginSuccessScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class LoginSuccessScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: SizedBox(),
-        title: Text("Login Success"),
+        title: Text("LS_title".tr),
       ),
       body: Body(),
     );

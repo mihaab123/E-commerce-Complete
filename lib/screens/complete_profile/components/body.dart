@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
+import 'package:shop_app/utils.dart';
 import 'package:shop_app/size_config.dart';
 
 import 'complete_profile_form.dart';
@@ -17,16 +17,16 @@ class Body extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: SizeConfig.screenHeight * 0.03),
-                Text("Complete Profile", style: headingStyle),
+                Text("PF_complete_title".tr, style: headingStyle),
                 Text(
-                  "Complete your details or continue  \nwith social media",
+                  "PF_complete_description".tr,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.06),
                 CompleteProfileForm(),
                 SizedBox(height: getProportionateScreenHeight(30)),
                 Text(
-                  "By continuing your confirm that you agree \nwith our Term and Condition",
+                  "SU_deal".tr,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.caption,
                 ),

@@ -7,6 +7,7 @@ import 'color_dots.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
+import 'package:shop_app/utils.dart';
 
 class Body extends StatelessWidget {
   final Product product;
@@ -41,7 +42,7 @@ class Body extends StatelessWidget {
                           top: getProportionateScreenWidth(15),
                         ),
                         child: DefaultButton(
-                          text: "Add To Cart",
+                          text: "BTN_add_cart".tr,
                           press: () {},
                         ),
                       ),

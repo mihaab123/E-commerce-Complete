@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/constants.dart';
+import 'package:shop_app/utils.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/size_config.dart';
 
@@ -15,18 +15,9 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    {
-      "text": "Welcome to MarketPlace, Let’s shop!",
-      "image": "assets/images/splash_1.png"
-    },
-    {
-      "text": "We help people conect with store \naround the World",
-      "image": "assets/images/splash_2.png"
-    },
-    {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
-      "image": "assets/images/splash_3.png"
-    },
+    {"text": "SP_firstpage".tr, "image": "assets/images/splash_1.png"},
+    {"text": "SP_secondpage".tr, "image": "assets/images/splash_2.png"},
+    {"text": "SP_thirdpage".tr, "image": "assets/images/splash_3.png"},
   ];
   @override
   Widget build(BuildContext context) {
@@ -67,7 +58,7 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(flex: 3),
                     DefaultButton(
-                      text: "Continue",
+                      text: "BTN_continue".tr,
                       press: () {
                         Navigator.pushNamed(context, SignInScreen.routeName);
                       },

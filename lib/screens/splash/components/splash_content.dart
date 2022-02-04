@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
-import '../../../constants.dart';
+import '../../../utils.dart';
 import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
@@ -17,7 +18,7 @@ class SplashContent extends StatelessWidget {
       children: <Widget>[
         Spacer(),
         Text(
-          "MARKET PLACE",
+          "SP_title".tr,
           style: TextStyle(
             fontSize: getProportionateScreenWidth(36),
             color: kPrimaryColor,

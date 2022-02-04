@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:shop_app/utils.dart';
 import 'components/body.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -8,7 +8,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Forgot Password"),
+        title: Text("SI_forgot_pass".tr),
       ),
       body: Body(),
     );
