@@ -84,7 +84,7 @@ class LocalizationService extends Translations {
           'CT_title': 'Your Cart',
           'CT_items': 'Items',
           'CT_total': 'Total',
-          'CT_add_code': 'Add voucher code"',
+          'CT_add_code': 'Add voucher code',
           // otp
           'OT_title': 'OTP Verification',
           'OT_sent': 'We sent your code to +1 898 860 ***',
@@ -157,7 +157,7 @@ class LocalizationService extends Translations {
           'CT_title': 'Корзина',
           'CT_items': 'позиции',
           'CT_total': 'Всего',
-          'CT_add_code': 'Добавить промокод"',
+          'CT_add_code': 'Добавить промокод',
           // otp
           'OT_title': 'OTP Verification',
           'OT_sent': 'We sent your code to +1 898 860 ***',
