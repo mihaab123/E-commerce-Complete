@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shop_app/components/no_account_text.dart';
 import 'package:shop_app/components/socal_card.dart';
+import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import '../../../size_config.dart';
 import 'sign_form.dart';
-import 'package:shop_app/utils.dart';
 
 class Body extends StatelessWidget {
+  FirebaseAuthController _firebaseAuthController =
+      Get.find<FirebaseAuthController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,7 +41,9 @@ class Body extends StatelessWidget {
                   children: [
                     SocalCard(
                       icon: "assets/icons/google-icon.svg",
-                      press: () {},
+                      press: () {
+                        _firebaseAuthController.signInWithGoogle();
+                      },
                     ),
                     SocalCard(
                       icon: "assets/icons/facebook-2.svg",

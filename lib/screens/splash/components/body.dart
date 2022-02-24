@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shop_app/controllers/firebase_auth_controller.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/utils.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/size_config.dart';
@@ -19,6 +22,8 @@ class _BodyState extends State<Body> {
     {"text": "SP_secondpage".tr, "image": "assets/images/splash_2.png"},
     {"text": "SP_thirdpage".tr, "image": "assets/images/splash_3.png"},
   ];
+  final FirebaseAuthController _firebaseAuthController =
+      Get.put(FirebaseAuthController());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -60,7 +65,11 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "BTN_continue".tr,
                       press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        _firebaseAuthController.user.value != null
+                            ? Navigator.pushNamed(context, HomeScreen.routeName)
+                            : Navigator.pushNamed(
+                                context, SignInScreen.routeName);
+                        //Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),
                     Spacer(),

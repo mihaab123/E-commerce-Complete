@@ -23,11 +23,11 @@ class FirebaseAuthController extends GetxController {
     fireAuthService.userStream.listen((User? newUser) async {
       user.value = newUser;
       print(newUser);
-      if (newUser == null) {
+      /*if (newUser == null) {
         fireAuthService.signInAnonymously();
       }
-      // signInWithGoogle();
-      // fireAuthService.signOut();
+      signInWithGoogle();
+       fireAuthService.signOut();*/
     });
   }
 
@@ -107,9 +107,9 @@ class FirebaseAuthController extends GetxController {
 
       InfoSnackBar().succesSnackbar('Succes!', 'Signed with google');
     } catch (e) {
-      print('SignUp error');
+      print('SignIn error' + e.toString());
       busy.value = false;
-      InfoSnackBar().errorSnackbar('Error!', 'SignUp error');
+      InfoSnackBar().errorSnackbar('Error!', 'SignIn error');
     }
   }
 

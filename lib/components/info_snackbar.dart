@@ -67,7 +67,7 @@ class InfoSnackBar {
                   fontSize: 17,
                   fontWeight: FontWeight.w400),
             ),
-            icon: SvgPicture.asset('assets/icons/succes.svg'),
+            icon: SvgPicture.asset('assets/icons/Success.svg'),
             margin: EdgeInsets.fromLTRB(
                 Get.width * 0.08, Get.height * 0.02, Get.width * 0.08, 0),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
@@ -103,7 +103,7 @@ class InfoSnackBar {
                   fontSize: 17,
                   fontWeight: FontWeight.w400),
             ),
-            icon: SvgPicture.asset('assets/icons/succes.svg'),
+            icon: SvgPicture.asset('assets/icons/Success.svg'),
             margin: EdgeInsets.fromLTRB(
                 Get.width * 0.08, Get.height * 0.02, Get.width * 0.08, 0),
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 14),
