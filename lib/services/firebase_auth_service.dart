@@ -58,6 +58,26 @@ class FireAuthService {
     }
   }
 
+  Future<UserCredential?> signUp(
+      {required String email, required String password}) async {
+    try {
+      UserCredential userCredential = await _firebaseAuth
+          .createUserWithEmailAndPassword(email: email, password: password);
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+        return Future.error(e);
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+        return Future.error(e);
+      }
+    } catch (e) {
+      print(e);
+      return Future.error(e);
+    }
+  }
+
   String _verificationCode = "";
 
   Future verifyPhoneNumber(String phoneNumber) async {

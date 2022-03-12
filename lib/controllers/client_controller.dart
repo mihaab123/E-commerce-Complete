@@ -83,18 +83,18 @@ class ClientController extends GetxController {
 
   // Set consumer data on SignUp
   // If authed by firestore and consumer data already created set to it or set to blank for use before auth started
-  Future setConsumerData({required Client newConsumer}) async {
+  Future setClientData({required Client newClient}) async {
     if (client is Client) {
       await clientRepository.setClient(
           client:
-              newConsumer.copyWith(authid: client!.authid, uuid: client!.uuid));
-      client = newConsumer.copyWith(authid: client!.authid, uuid: client!.uuid);
+              newClient.copyWith(authid: client!.authid, uuid: client!.uuid));
+      client = newClient.copyWith(authid: client!.authid, uuid: client!.uuid);
     } else {
-      consumerBlank = newConsumer;
+      clientBlank = newClient;
     }
   }
 
-  Client consumerBlank = Client(
+  Client clientBlank = Client(
       authid: 'firebaseAuthController.user.value!.uid',
       firstname: '',
       secondName: '',
@@ -134,12 +134,12 @@ class ClientController extends GetxController {
 
         print(client);
       } else {
-        Client newConsumer = consumerBlank.copyWith(
+        Client newClient = clientBlank.copyWith(
             authid: firebaseAuthController.user.value!.uid);
 
-        clientRepository.setClient(client: newConsumer);
+        clientRepository.setClient(client: newClient);
 
-        client = newConsumer;
+        client = newClient;
 
         print('Created new Client dataclass');
       }

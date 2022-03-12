@@ -127,4 +127,19 @@ class FirebaseAuthController extends GetxController {
       InfoSnackBar().errorSnackbar('Error!', 'SignUp error');
     }
   }
+
+  signUpByEmail({required String email, required String password}) async {
+    busy.value = true;
+    try {
+      // Sent sms to user and wait for verification
+      await fireAuthService.signUp(email: email, password: password);
+      busy.value = false;
+
+      InfoSnackBar().succesSnackbar('Succes!', 'Signed with email');
+    } catch (e) {
+      print('SignUp error');
+      busy.value = false;
+      InfoSnackBar().errorSnackbar('Error!', 'SignUp error');
+    }
+  }
 }

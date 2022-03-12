@@ -44,6 +44,10 @@ class LocalizationService extends Translations {
           'SI_enter_pass': 'Enter your password',
           'SI_email': 'Email',
           'SI_enter_email': 'Enter your email',
+          'SI_name': 'Name',
+          'SI_enter_name': 'Enter your name',
+          'SI_lastname': 'Second name',
+          'SI_enter_lastname': 'Enter your second name',
           'SI_confirm_pass': 'Confirm Password',
           'SI_enter_confirm_pass': 'Re-enter your password',
           'SI_sign_email':
@@ -117,6 +121,10 @@ class LocalizationService extends Translations {
           'SI_enter_pass': 'Введите ваш пароль',
           'SI_email': 'Email',
           'SI_enter_email': 'Введите ваш email',
+          'SI_name': 'Имя',
+          'SI_enter_name': 'Введите ваше имя',
+          'SI_lastname': 'Фамилия',
+          'SI_enter_lastname': 'Введите вашу фамилию',
           'SI_confirm_pass': 'Подвердить пароль',
           'SI_enter_confirm_pass': 'Введите еще раз пароль',
           'SI_sign_email':

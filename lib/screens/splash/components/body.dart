@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_app/controllers/client_controller.dart';
+import 'package:shop_app/controllers/client_repository.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/utils.dart';
@@ -24,6 +26,8 @@ class _BodyState extends State<Body> {
   ];
   final FirebaseAuthController _firebaseAuthController =
       Get.put(FirebaseAuthController());
+  final ClientController _clientController =
+      Get.put(ClientController(clientRepository: ClientRepository()));
   @override
   Widget build(BuildContext context) {
     return SafeArea(
