@@ -66,8 +66,9 @@ class _BodyState extends State<Body> {
                       text: "BTN_continue".tr,
                       press: () {
                         _firebaseAuthController.user.value != null
-                            ? Navigator.pushNamed(context, HomeScreen.routeName)
-                            : Navigator.pushNamed(
+                            ? Navigator.pushReplacementNamed(
+                                context, HomeScreen.routeName)
+                            : Navigator.pushReplacementNamed(
                                 context, SignInScreen.routeName);
                         //Navigator.pushNamed(context, SignInScreen.routeName);
                       },

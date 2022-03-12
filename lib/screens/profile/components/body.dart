@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shop_app/controllers/firebase_auth_controller.dart';
+import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'package:shop_app/utils.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
+  final FirebaseAuthController _firebaseAuthController =
+      Get.put(FirebaseAuthController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -35,7 +40,10 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "BTN_logout".tr,
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () async {
+              await _firebaseAuthController.signOut();
+              Navigator.pushReplacementNamed(context, SignInScreen.routeName);
+            },
           ),
         ],
       ),

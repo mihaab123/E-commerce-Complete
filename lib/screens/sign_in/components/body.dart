@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shop_app/components/no_account_text.dart';
 import 'package:shop_app/components/socal_card.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import '../../../size_config.dart';
 import 'sign_form.dart';
 
@@ -41,8 +42,10 @@ class Body extends StatelessWidget {
                   children: [
                     SocalCard(
                       icon: "assets/icons/google-icon.svg",
-                      press: () {
-                        _firebaseAuthController.signInWithGoogle();
+                      press: () async {
+                        await _firebaseAuthController.signInWithGoogle();
+                        if (_firebaseAuthController.user.value != null)
+                          Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
                     SocalCard(
