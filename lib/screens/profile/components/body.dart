@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
-import 'package:shop_app/utils.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
