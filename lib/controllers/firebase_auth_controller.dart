@@ -117,11 +117,10 @@ class FirebaseAuthController extends GetxController {
     busy.value = true;
     try {
       // Sent sms to user and wait for verification
-      await fireAuthService.registrationByMail(
-          email: email, password: password);
+      await fireAuthService.signIn(email: email, password: password);
       busy.value = false;
 
-      InfoSnackBar().succesSnackbar('Succes!', 'Signed with google');
+      InfoSnackBar().succesSnackbar('Succes!', 'Signed with email');
     } catch (e) {
       print('SignUp error');
       busy.value = false;

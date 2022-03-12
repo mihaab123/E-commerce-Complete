@@ -5,7 +5,7 @@ import 'package:shop_app/components/form_error.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/helper/keyboard.dart';
 import 'package:shop_app/screens/forgot_password/forgot_password_screen.dart';
-import 'package:shop_app/screens/login_success/login_success_screen.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 
 import '../../../components/default_button.dart';
 import '../../../utils.dart';
@@ -76,12 +76,15 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "BTN_continue".tr,
-            press: () {
+            press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+                await _firebaseAuthController.signInByEmail(
+                    email: email!, password: password!);
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+                if (_firebaseAuthController.user.value != null)
+                  Navigator.pushNamed(context, HomeScreen.routeName);
               }
             },
           ),
