@@ -8,7 +8,7 @@ class Product {
   final String title;
   final String description;
   final List<String> images;
-  final List<Color> colors;
+  final List<String> colors;
   final double rating;
   final double price;
   final bool isFavourite;
@@ -31,7 +31,7 @@ class Product {
     String? title,
     String? description,
     List<String>? images,
-    List<Color>? colors,
+    List<String>? colors,
     double? rating,
     double? price,
     bool? isFavourite,
@@ -56,7 +56,7 @@ class Product {
       'title': title,
       'description': description,
       'images': images,
-      'colors': colors.map((x) => x.value).toList(),
+      'colors': colors,
       'rating': rating,
       'price': price,
       'isFavourite': isFavourite,
@@ -70,7 +70,7 @@ class Product {
       title: map['title'] ?? '',
       description: map['description'] ?? '',
       images: List<String>.from(map['images']),
-      colors: List<Color>.from(map['colors']?.map((x) => Color(x))),
+      colors: List<String>.from(map['colors']),
       rating: map['rating']?.toDouble() ?? 0.0,
       price: map['price']?.toDouble() ?? 0.0,
       isFavourite: map['isFavourite'] ?? false,
@@ -130,10 +130,10 @@ List<Product> demoProducts = [
       "assets/images/ps4_console_white_4.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
-      Colors.white,
+      Color(0xFFF6625E).toString(),
+      Color(0xFF836DB8).toString(),
+      Color(0xFFDECB9C).toString(),
+      Colors.white.toString(),
     ],
     title: "Wireless Controller for PS4™",
     price: 64.99,
@@ -148,10 +148,10 @@ List<Product> demoProducts = [
       "assets/images/Image Popular Product 2.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
-      Colors.white,
+      Color(0xFFF6625E).toString(),
+      Color(0xFF836DB8).toString(),
+      Color(0xFFDECB9C).toString(),
+      Colors.white.toString(),
     ],
     title: "Nike Sport White - Man Pant",
     price: 50.5,
@@ -165,10 +165,10 @@ List<Product> demoProducts = [
       "assets/images/glap.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
-      Colors.white,
+      Color(0xFFF6625E).toString(),
+      Color(0xFF836DB8).toString(),
+      Color(0xFFDECB9C).toString(),
+      Colors.white.toString(),
     ],
     title: "Gloves XC Omega - Polygon",
     price: 36.55,
@@ -183,10 +183,10 @@ List<Product> demoProducts = [
       "assets/images/wireless headset.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
-      Colors.white,
+      Color(0xFFF6625E).toString(),
+      Color(0xFF836DB8).toString(),
+      Color(0xFFDECB9C).toString(),
+      Colors.white.toString(),
     ],
     title: "Logitech Head",
     price: 20.20,

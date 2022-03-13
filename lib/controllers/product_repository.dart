@@ -4,9 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:path_provider/path_provider.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
-import 'package:firebase_core/firebase_core.dart' as firebase_core;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 abstract class IProductRepository {
@@ -52,16 +49,16 @@ class ProductRepository extends IProductRepository {
   @override
   Future addProduct({required Product product}) async {
     // add photos
-    for (String curAsset in product.images) {
+    /*for (String curAsset in product.images) {
       File _imageFile = await getImageFileFromAssets(curAsset);
       curAsset = await uploadImageToFirebase(_imageFile);
-    }
+    }*/
     // add pproduct
     setProduct(product: product);
   }
 
   Future<File> getImageFileFromAssets(String path) async {
-    final byteData = await rootBundle.load('$path');
+    final byteData = await rootBundle.load('assets/$path');
 
     final file = File('${(await getTemporaryDirectory()).path}/$path');
     await file.writeAsBytes(byteData.buffer
@@ -83,7 +80,7 @@ class ProductRepository extends IProductRepository {
         customMetadata: {'picked-file-path': fileName});
     firebase_storage.UploadTask uploadTask;
     //late StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
-    uploadTask = ref.putFile(File(_imageFile!.path)!, metadata);
+    uploadTask = ref.putFile(File(_imageFile.path), metadata);
 
     firebase_storage.UploadTask task = await Future.value(uploadTask);
     Future.value(uploadTask).then((value) {

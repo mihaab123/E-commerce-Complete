@@ -18,7 +18,9 @@ class AllProducts extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
+    /*for (Product product in demoProducts) {
+      ProductRepository().addProduct(product: product);
+    }*/
     initialLoad();
   }
 
