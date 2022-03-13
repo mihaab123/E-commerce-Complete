@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Product {
-  final int id;
+  final String uuid;
   final String title;
   final String description;
   final List<String> images;
@@ -15,7 +15,7 @@ class Product {
   final bool isPopular;
 
   Product({
-    required this.id,
+    required this.uuid,
     required this.title,
     required this.description,
     required this.images,
@@ -27,7 +27,7 @@ class Product {
   });
 
   Product copyWith({
-    int? id,
+    String? uuid,
     String? title,
     String? description,
     List<String>? images,
@@ -38,7 +38,7 @@ class Product {
     bool? isPopular,
   }) {
     return Product(
-      id: id ?? this.id,
+      uuid: uuid ?? this.uuid,
       title: title ?? this.title,
       description: description ?? this.description,
       images: images ?? this.images,
@@ -52,7 +52,7 @@ class Product {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'uuid': uuid,
       'title': title,
       'description': description,
       'images': images,
@@ -66,7 +66,7 @@ class Product {
 
   factory Product.fromMap(Map<String, dynamic> map) {
     return Product(
-      id: map['id']?.toInt() ?? 0,
+      uuid: map['uuid'] ?? 0,
       title: map['title'] ?? '',
       description: map['description'] ?? '',
       images: List<String>.from(map['images']),
@@ -85,7 +85,7 @@ class Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, title: $title, description: $description, images: $images, colors: $colors, rating: $rating, price: $price, isFavourite: $isFavourite, isPopular: $isPopular)';
+    return 'Product(uuid: $uuid, title: $title, description: $description, images: $images, colors: $colors, rating: $rating, price: $price, isFavourite: $isFavourite, isPopular: $isPopular)';
   }
 
   @override
@@ -93,7 +93,7 @@ class Product {
     if (identical(this, other)) return true;
 
     return other is Product &&
-        other.id == id &&
+        other.uuid == uuid &&
         other.title == title &&
         other.description == description &&
         listEquals(other.images, images) &&
@@ -106,7 +106,7 @@ class Product {
 
   @override
   int get hashCode {
-    return id.hashCode ^
+    return uuid.hashCode ^
         title.hashCode ^
         description.hashCode ^
         images.hashCode ^
@@ -122,7 +122,7 @@ class Product {
 
 List<Product> demoProducts = [
   Product(
-    id: 1,
+    uuid: "1",
     images: [
       "assets/images/ps4_console_white_1.png",
       "assets/images/ps4_console_white_2.png",
@@ -143,7 +143,7 @@ List<Product> demoProducts = [
     isPopular: true,
   ),
   Product(
-    id: 2,
+    uuid: "2",
     images: [
       "assets/images/Image Popular Product 2.png",
     ],
@@ -160,7 +160,7 @@ List<Product> demoProducts = [
     isPopular: true,
   ),
   Product(
-    id: 3,
+    uuid: "3",
     images: [
       "assets/images/glap.png",
     ],
@@ -178,7 +178,7 @@ List<Product> demoProducts = [
     isPopular: true,
   ),
   Product(
-    id: 4,
+    uuid: '4',
     images: [
       "assets/images/wireless headset.png",
     ],
