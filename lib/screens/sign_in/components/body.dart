@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/components/no_account_text.dart';
 import 'package:shop_app/components/socal_card.dart';
+import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import '../../../size_config.dart';
@@ -10,6 +11,7 @@ import 'sign_form.dart';
 class Body extends StatelessWidget {
   FirebaseAuthController _firebaseAuthController =
       Get.find<FirebaseAuthController>();
+  ClientController _clientController = Get.find<ClientController>();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,8 +46,14 @@ class Body extends StatelessWidget {
                       icon: "assets/icons/google-icon.svg",
                       press: () async {
                         await _firebaseAuthController.signInWithGoogle();
-                        if (_firebaseAuthController.user.value != null)
-                          Navigator.pushNamed(context, HomeScreen.routeName);
+                        if (_firebaseAuthController.user.value !=
+                            null) if (_clientController.client == null) {
+                          await _clientController.setClientData(
+                              newClient: _clientController.clientBlank.copyWith(
+                                  firstname: _firebaseAuthController
+                                      .user.value!.displayName));
+                        }
+                        Navigator.pushNamed(context, HomeScreen.routeName);
                       },
                     ),
                     SocalCard(
