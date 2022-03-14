@@ -72,7 +72,7 @@ class CheckoutCard extends StatelessWidget {
                       text: "CT_total".tr + ":\n",
                       children: [
                         TextSpan(
-                          text: "\$${_clientController.getCartCount()}",
+                          text: "\$${_clientController.cartCount}",
                           style: TextStyle(fontSize: 16, color: Colors.black),
                         ),
                       ],

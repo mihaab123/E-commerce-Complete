@@ -28,6 +28,7 @@ class ClientController extends GetxController {
 
   set client(Client? client) => this._client.value = client;
   RxBool init = RxBool(false);
+  RxDouble cartCount = RxDouble(0);
   //RemoteConfigSetup remoteConfigSetup = Get.put(
   //  RemoteConfigSetup(),
   //);
@@ -95,6 +96,7 @@ class ClientController extends GetxController {
     } else {
       clientBlank = newClient;
     }
+    cartCount.value = getCartCount();
   }
 
   Client clientBlank = Client(
@@ -156,7 +158,7 @@ class ClientController extends GetxController {
     clientLoading.value = false;
 
     print(_client);
-
+    cartCount.value = getCartCount();
     init.value = true;
   }
 
