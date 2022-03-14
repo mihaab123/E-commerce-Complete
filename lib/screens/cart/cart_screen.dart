@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/models/Cart.dart';
-import 'package:shop_app/utils.dart';
+import 'package:get/get.dart';
+import 'package:shop_app/controllers/client_controller.dart';
 import 'components/body.dart';
 import 'components/check_out_card.dart';
 
 class CartScreen extends StatelessWidget {
   static String routeName = "/cart";
+  ClientController _clientController = Get.find<ClientController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,10 +24,12 @@ class CartScreen extends StatelessWidget {
             "CT_title".tr,
             style: TextStyle(color: Colors.black),
           ),
-          Text(
-            "${demoCarts.length} " + "CT_items".tr,
-            style: Theme.of(context).textTheme.caption,
-          ),
+          Obx(() {
+            return Text(
+              "${_clientController.client!.cardTokens.length} " + "CT_items".tr,
+              style: Theme.of(context).textTheme.caption,
+            );
+          }),
         ],
       ),
     );

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/components/info_snackbar.dart';
+import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/size_config.dart';
 
@@ -7,12 +10,11 @@ import 'color_dots.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
-import 'package:shop_app/utils.dart';
 
 class Body extends StatelessWidget {
   final Product product;
-
-  const Body({Key? key, required this.product}) : super(key: key);
+  ClientController _clientController = Get.find<ClientController>();
+  Body({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,11 @@ class Body extends StatelessWidget {
                         ),
                         child: DefaultButton(
                           text: "BTN_add_cart".tr,
-                          press: () {},
+                          press: () async {
+                            await _clientController.addProductToCard(product);
+                            InfoSnackBar().infoSnackbar(
+                                'Add to Cart!', 'Added ${product.title}');
+                          },
                         ),
                       ),
                     ),

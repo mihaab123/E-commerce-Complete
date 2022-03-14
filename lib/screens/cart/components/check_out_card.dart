@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/controllers/client_controller.dart';
 
 import '../../../utils.dart';
 import '../../../size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
-  const CheckoutCard({
+  ClientController _clientController = Get.find<ClientController>();
+  CheckoutCard({
     Key? key,
   }) : super(key: key);
 
@@ -63,17 +66,19 @@ class CheckoutCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "CT_total".tr + ":\n",
-                    children: [
-                      TextSpan(
-                        text: "\$337.15",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                    ],
-                  ),
-                ),
+                Obx(() {
+                  return Text.rich(
+                    TextSpan(
+                      text: "CT_total".tr + ":\n",
+                      children: [
+                        TextSpan(
+                          text: "\$${_clientController.getCartCount()}",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(

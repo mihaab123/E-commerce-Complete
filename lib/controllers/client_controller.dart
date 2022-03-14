@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:shop_app/controllers/client_repository.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
+import 'package:shop_app/models/Cart.dart';
+import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/client.dart';
 
 class ClientController extends GetxController {
@@ -183,5 +186,43 @@ class ClientController extends GetxController {
     List versionCells = version.split('.');
     versionCells = versionCells.map((i) => int.parse(i)).toList();
     return versionCells[0] * 10000 + versionCells[1] * 100 + versionCells[2];
+  }
+
+  addProductToCard(Product product) async {
+    List<Cart> _cartList = client!.cardTokens;
+    bool needAdd = true;
+    for (Cart cart in _cartList) {
+      if (cart.product == product) {
+        needAdd = false;
+        cart = cart.copyWith(numOfItem: cart.numOfItem + 1);
+      }
+    }
+    if (needAdd) {
+      _cartList.add(Cart(product: product, numOfItem: 1));
+    }
+    setClientData(newClient: client!.copyWith(cardTokens: _cartList));
+  }
+
+  removeProductFromCard(Product product) async {
+    List<Cart> _cartList = client!.cardTokens;
+    bool needAdd = true;
+    for (Cart cart in _cartList) {
+      if (cart.product == product && cart.numOfItem > 1) {
+        needAdd = false;
+        cart = cart.copyWith(numOfItem: cart.numOfItem - 1);
+      }
+    }
+    if (needAdd) {
+      _cartList.removeWhere((element) => element.product == product);
+    }
+    setClientData(newClient: client!.copyWith(cardTokens: _cartList));
+  }
+
+  double getCartCount() {
+    double count = 0;
+    for (Cart cart in client!.cardTokens) {
+      count += cart.product.price * cart.numOfItem;
+    }
+    return count;
   }
 }
