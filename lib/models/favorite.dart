@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 class Favorite {
-  final String id;
   final String productId;
   Favorite({
-    required this.id,
     required this.productId,
   });
 
@@ -13,21 +11,18 @@ class Favorite {
     String? productId,
   }) {
     return Favorite(
-      id: id ?? this.id,
       productId: productId ?? this.productId,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'productId': productId,
     };
   }
 
   factory Favorite.fromMap(Map<String, dynamic> map) {
     return Favorite(
-      id: map['id'] ?? '',
       productId: map['productId'] ?? '',
     );
   }
@@ -38,15 +33,15 @@ class Favorite {
       Favorite.fromMap(json.decode(source));
 
   @override
-  String toString() => 'Favorite(id: $id, productId: $productId)';
+  String toString() => 'Favorite(productId: $productId)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is Favorite && other.id == id && other.productId == productId;
+    return other is Favorite && other.productId == productId;
   }
 
   @override
-  int get hashCode => id.hashCode ^ productId.hashCode;
+  int get hashCode => productId.hashCode;
 }

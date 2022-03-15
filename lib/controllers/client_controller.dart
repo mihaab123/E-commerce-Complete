@@ -6,6 +6,7 @@ import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/models/Cart.dart';
 import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/models/client.dart';
+import 'package:shop_app/models/favorite.dart';
 
 class ClientController extends GetxController {
   final IClientRepository clientRepository;
@@ -226,5 +227,19 @@ class ClientController extends GetxController {
       count += cart.product.price * cart.numOfItem;
     }
     return count;
+  }
+
+  addToFavorite(String productId) async {
+    List<Favorite> _favoriteList = client!.favouriteModel;
+    if (!_favoriteList.contains(Favorite(productId: productId)))
+      _favoriteList.add(Favorite(productId: productId));
+
+    setClientData(newClient: client!.copyWith(favouriteModel: _favoriteList));
+  }
+
+  removeFromFavorite(String productId) async {
+    List<Favorite> _favoriteList = client!.favouriteModel;
+    _favoriteList.removeWhere((element) => element.productId == productId);
+    setClientData(newClient: client!.copyWith(favouriteModel: _favoriteList));
   }
 }

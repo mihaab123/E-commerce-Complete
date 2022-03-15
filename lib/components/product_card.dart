@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/models/favorite.dart';
 import 'package:shop_app/screens/details/details_screen.dart';
 
 import '../utils.dart';
 import '../size_config.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
+  ProductCard({
     Key? key,
     this.width = 140,
     this.aspectRetio = 1.02,
@@ -16,6 +19,7 @@ class ProductCard extends StatelessWidget {
 
   final double width, aspectRetio;
   final Product product;
+  final ClientController _clientController = Get.find<ClientController>();
 
   @override
   Widget build(BuildContext context) {
@@ -63,27 +67,36 @@ class ProductCard extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
-                    child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
-                      decoration: BoxDecoration(
-                        color: product.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
-                        shape: BoxShape.circle,
+                  Obx(() {
+                    bool isFavourite = _clientController.client!.favouriteModel
+                        .contains(Favorite(productId: product.uuid));
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(50),
+                      onTap: () {
+                        if (isFavourite)
+                          _clientController.removeFromFavorite(product.uuid);
+                        else
+                          _clientController.addToFavorite(product.uuid);
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
+                        height: getProportionateScreenWidth(28),
+                        width: getProportionateScreenWidth(28),
+                        decoration: BoxDecoration(
+                          color: isFavourite
+                              ? kPrimaryColor.withOpacity(0.15)
+                              : kSecondaryColor.withOpacity(0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/Heart Icon_2.svg",
+                          color: isFavourite
+                              ? Color(0xFFFF4848)
+                              : Color(0xFFDBDEE4),
+                        ),
                       ),
-                      child: SvgPicture.asset(
-                        "assets/icons/Heart Icon_2.svg",
-                        color: product.isFavourite
-                            ? Color(0xFFFF4848)
-                            : Color(0xFFDBDEE4),
-                      ),
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               )
             ],
