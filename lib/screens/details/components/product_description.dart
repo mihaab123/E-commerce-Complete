@@ -17,7 +17,7 @@ class ProductDescription extends StatelessWidget {
 
   final Product product;
   final GestureTapCallback? pressOnSeeMore;
-  final ClientController _clientController = Get.find<ClientController>();
+  final ClientController controller = Get.find<ClientController>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,16 +45,18 @@ class ProductDescription extends StatelessWidget {
                 bottomLeft: Radius.circular(20),
               ),
             ),
-            child: Obx(() {
-              return SvgPicture.asset(
-                "assets/icons/Heart Icon_2.svg",
-                color: _clientController.client!.favouriteModel
-                        .contains(Favorite(productId: product.uuid))
-                    ? Color(0xFFFF4848)
-                    : Color(0xFFDBDEE4),
-                height: getProportionateScreenWidth(16),
-              );
-            }),
+            child: GetBuilder<ClientController>(
+              builder: ((controller) {
+                return SvgPicture.asset(
+                  "assets/icons/Heart Icon_2.svg",
+                  color: controller.client!.favouriteModel
+                          .contains(Favorite(productId: product.uuid))
+                      ? Color(0xFFFF4848)
+                      : Color(0xFFDBDEE4),
+                  height: getProportionateScreenWidth(16),
+                );
+              }),
+            ),
           ),
         ),
         Padding(

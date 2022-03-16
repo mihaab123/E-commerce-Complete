@@ -235,11 +235,13 @@ class ClientController extends GetxController {
       _favoriteList.add(Favorite(productId: productId));
 
     setClientData(newClient: client!.copyWith(favouriteModel: _favoriteList));
+    update();
   }
 
   removeFromFavorite(String productId) async {
     List<Favorite> _favoriteList = client!.favouriteModel;
     _favoriteList.removeWhere((element) => element.productId == productId);
     setClientData(newClient: client!.copyWith(favouriteModel: _favoriteList));
+    update();
   }
 }

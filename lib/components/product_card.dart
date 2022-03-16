@@ -67,36 +67,40 @@ class ProductCard extends StatelessWidget {
                       color: kPrimaryColor,
                     ),
                   ),
-                  Obx(() {
-                    bool isFavourite = _clientController.client!.favouriteModel
-                        .contains(Favorite(productId: product.uuid));
-                    return InkWell(
-                      borderRadius: BorderRadius.circular(50),
-                      onTap: () {
-                        if (isFavourite)
-                          _clientController.removeFromFavorite(product.uuid);
-                        else
-                          _clientController.addToFavorite(product.uuid);
-                      },
-                      child: Container(
-                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                        height: getProportionateScreenWidth(28),
-                        width: getProportionateScreenWidth(28),
-                        decoration: BoxDecoration(
-                          color: isFavourite
-                              ? kPrimaryColor.withOpacity(0.15)
-                              : kSecondaryColor.withOpacity(0.1),
-                          shape: BoxShape.circle,
+                  GetBuilder<ClientController>(
+                    builder: ((_clientController) {
+                      bool isFavourite = _clientController
+                          .client!.favouriteModel
+                          .contains(Favorite(productId: product.uuid));
+                      return InkWell(
+                        borderRadius: BorderRadius.circular(50),
+                        onTap: () {
+                          if (isFavourite)
+                            _clientController.removeFromFavorite(product.uuid);
+                          else
+                            _clientController.addToFavorite(product.uuid);
+                        },
+                        child: Container(
+                          padding:
+                              EdgeInsets.all(getProportionateScreenWidth(8)),
+                          height: getProportionateScreenWidth(28),
+                          width: getProportionateScreenWidth(28),
+                          decoration: BoxDecoration(
+                            color: isFavourite
+                                ? kPrimaryColor.withOpacity(0.15)
+                                : kSecondaryColor.withOpacity(0.1),
+                            shape: BoxShape.circle,
+                          ),
+                          child: SvgPicture.asset(
+                            "assets/icons/Heart Icon_2.svg",
+                            color: isFavourite
+                                ? Color(0xFFFF4848)
+                                : Color(0xFFDBDEE4),
+                          ),
                         ),
-                        child: SvgPicture.asset(
-                          "assets/icons/Heart Icon_2.svg",
-                          color: isFavourite
-                              ? Color(0xFFFF4848)
-                              : Color(0xFFDBDEE4),
-                        ),
-                      ),
-                    );
-                  }),
+                      );
+                    }),
+                  )
                 ],
               )
             ],
