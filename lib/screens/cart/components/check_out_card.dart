@@ -66,19 +66,21 @@ class CheckoutCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Obx(() {
-                  return Text.rich(
-                    TextSpan(
-                      text: "CT_total".tr + ":\n",
-                      children: [
-                        TextSpan(
-                          text: "\$${_clientController.cartCount}",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
+                GetBuilder<ClientController>(
+                  builder: ((_clientController) {
+                    return Text.rich(
+                      TextSpan(
+                        text: "CT_total".tr + ":\n",
+                        children: [
+                          TextSpan(
+                            text: "\$${_clientController.cartCount}",
+                            style: TextStyle(fontSize: 16, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+                ),
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(

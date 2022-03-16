@@ -98,6 +98,7 @@ class ClientController extends GetxController {
       clientBlank = newClient;
     }
     cartCount.value = getCartCount();
+    update();
   }
 
   Client clientBlank = Client(
