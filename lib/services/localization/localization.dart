@@ -84,6 +84,8 @@ class LocalizationService extends Translations {
           'PF_notifications': 'Notifications',
           'PF_settings': 'Settings',
           'PF_help': 'Help Center',
+          // favourite
+          'FV_title': 'Your Favourite',
           // cart
           'CT_title': 'Your Cart',
           'CT_items': 'Items',
@@ -161,6 +163,8 @@ class LocalizationService extends Translations {
           'PF_notifications': 'Уведомления',
           'PF_settings': 'Настройки',
           'PF_help': 'Центр помощи',
+          // favourite
+          'FV_title': 'Сохраненные',
           // cart
           'CT_title': 'Корзина',
           'CT_items': 'позиции',

@@ -34,26 +34,37 @@ class ProductDescription extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.centerRight,
-          child: Container(
-            padding: EdgeInsets.all(getProportionateScreenWidth(15)),
-            width: getProportionateScreenWidth(64),
-            decoration: BoxDecoration(
-              color:
-                  product.isFavourite ? Color(0xFFFFE6E6) : Color(0xFFF5F6F9),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-              ),
-            ),
+          child: InkWell(
+            onTap: () {
+              if (controller.client!.favouriteModel
+                  .contains(Favorite(productId: product.uuid)))
+                controller.removeFromFavorite(product.uuid);
+              else
+                controller.addToFavorite(product.uuid);
+            },
             child: GetBuilder<ClientController>(
               builder: ((controller) {
-                return SvgPicture.asset(
-                  "assets/icons/Heart Icon_2.svg",
-                  color: controller.client!.favouriteModel
-                          .contains(Favorite(productId: product.uuid))
-                      ? Color(0xFFFF4848)
-                      : Color(0xFFDBDEE4),
-                  height: getProportionateScreenWidth(16),
+                return Container(
+                  padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+                  width: getProportionateScreenWidth(64),
+                  decoration: BoxDecoration(
+                    color: controller.client!.favouriteModel
+                            .contains(Favorite(productId: product.uuid))
+                        ? Color(0xFFFFE6E6)
+                        : Color(0xFFF5F6F9),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                    ),
+                  ),
+                  child: SvgPicture.asset(
+                    "assets/icons/Heart Icon_2.svg",
+                    color: controller.client!.favouriteModel
+                            .contains(Favorite(productId: product.uuid))
+                        ? Color(0xFFFF4848)
+                        : Color(0xFFDBDEE4),
+                    height: getProportionateScreenWidth(16),
+                  ),
                 );
               }),
             ),
