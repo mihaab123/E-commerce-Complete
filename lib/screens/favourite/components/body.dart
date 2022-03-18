@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:shop_app/components/info_snackbar.dart';
 import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/controllers/product_controller.dart';
-import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/screens/favourite/components/favourite_card.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:flutter_svg/svg.dart';

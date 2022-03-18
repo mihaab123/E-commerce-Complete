@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
+import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -31,7 +32,10 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "PF_settings".tr,
             icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () => Navigator.pushNamed(
+              context,
+              SettingsScreen.routeName,
+            ),
           ),
           ProfileMenu(
             text: "PF_help".tr,
