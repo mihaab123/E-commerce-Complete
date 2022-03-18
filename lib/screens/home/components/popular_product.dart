@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/components/product_card.dart';
 import 'package:shop_app/controllers/product_controller.dart';
-import 'package:shop_app/models/Product.dart';
+import 'package:shop_app/screens/product/products_screen.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
@@ -17,7 +17,10 @@ class PopularProducts extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(20)),
-            child: SectionTitle(title: "HS_popular_products".tr, press: () {}),
+            child: SectionTitle(
+                title: "HS_popular_products".tr,
+                press: () =>
+                    Navigator.pushNamed(context, ProductsScreen.routeName)),
           ),
           SizedBox(height: getProportionateScreenWidth(20)),
           SingleChildScrollView(
