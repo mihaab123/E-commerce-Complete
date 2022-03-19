@@ -2,9 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 class Product {
-  final String uuid;
+  String? uuid;
   final String title;
   final String description;
   final List<String> images;
@@ -15,7 +16,7 @@ class Product {
   final bool isPopular;
 
   Product({
-    required this.uuid,
+    String? uuid,
     required this.title,
     required this.description,
     required this.images,
@@ -24,7 +25,7 @@ class Product {
     required this.price,
     this.isFavourite = false,
     this.isPopular = false,
-  });
+  }) : uuid = uuid ?? Uuid().v4();
 
   Product copyWith({
     String? uuid,

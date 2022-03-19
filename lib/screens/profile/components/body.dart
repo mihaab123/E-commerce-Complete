@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shop_app/controllers/client_controller.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/screens/settings/settings_screen.dart';
 import 'package:shop_app/screens/sign_in/sign_in_screen.dart';
@@ -10,7 +9,6 @@ import 'profile_pic.dart';
 class Body extends StatelessWidget {
   final FirebaseAuthController _firebaseAuthController =
       Get.find<FirebaseAuthController>();
-  final ClientController _clientController = Get.find<ClientController>();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

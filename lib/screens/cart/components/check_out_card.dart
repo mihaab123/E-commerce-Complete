@@ -8,7 +8,6 @@ import '../../../utils.dart';
 import '../../../size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
-  ClientController _clientController = Get.find<ClientController>();
   CheckoutCard({
     Key? key,
   }) : super(key: key);

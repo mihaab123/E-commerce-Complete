@@ -19,7 +19,6 @@ class ProductCard extends StatelessWidget {
 
   final double width, aspectRetio;
   final Product product;
-  final ClientController _clientController = Get.find<ClientController>();
 
   @override
   Widget build(BuildContext context) {
@@ -71,14 +70,14 @@ class ProductCard extends StatelessWidget {
                     builder: ((_clientController) {
                       bool isFavourite = _clientController
                           .client!.favouriteModel
-                          .contains(Favorite(productId: product.uuid));
+                          .contains(Favorite(productId: product.uuid!));
                       return InkWell(
                         borderRadius: BorderRadius.circular(50),
                         onTap: () {
                           if (isFavourite)
-                            _clientController.removeFromFavorite(product.uuid);
+                            _clientController.removeFromFavorite(product.uuid!);
                           else
-                            _clientController.addToFavorite(product.uuid);
+                            _clientController.addToFavorite(product.uuid!);
                         },
                         child: Container(
                           padding:
