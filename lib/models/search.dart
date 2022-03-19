@@ -1,10 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
+import 'package:shop_app/models/category.dart';
 
 class SearchModel {
   String name;
-  List<String> categories;
+  List<CategoryModel> categories;
   SearchModel({
     required this.name,
     required this.categories,
@@ -12,7 +13,7 @@ class SearchModel {
 
   SearchModel copyWith({
     String? name,
-    List<String>? categories,
+    List<CategoryModel>? categories,
   }) {
     return SearchModel(
       name: name ?? this.name,
@@ -30,7 +31,7 @@ class SearchModel {
   factory SearchModel.fromMap(Map<String, dynamic> map) {
     return SearchModel(
       name: map['name'] ?? '',
-      categories: List<String>.from(map['categories']),
+      categories: List<CategoryModel>.from(map['categories']),
     );
   }
 
