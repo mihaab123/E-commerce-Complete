@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:shop_app/models/category.dart';
 
 class SearchModel {
   String name;

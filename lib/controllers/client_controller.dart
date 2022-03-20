@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+
 import 'package:shop_app/controllers/client_repository.dart';
 import 'package:shop_app/controllers/firebase_auth_controller.dart';
 import 'package:shop_app/models/Cart.dart';

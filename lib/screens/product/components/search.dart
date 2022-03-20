@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:shop_app/components/default_button.dart';
 import 'package:shop_app/controllers/category_controller.dart';
 import 'package:shop_app/controllers/search_controller.dart';
-import 'package:shop_app/models/category.dart';
 import 'package:shop_app/screens/details/components/top_rounded_container.dart';
 import 'package:shop_app/screens/home/components/search_field.dart';
 import 'package:shop_app/screens/product/components/search_item.dart';
@@ -133,7 +132,7 @@ class _SearchState extends State<Search> {
                         ),
                         child: DefaultButton(
                           text: "BTN_apply".tr,
-                          press: () {
+                          press: () async {
                             _searchController.setSearchData(
                                 newSearch: _searchController.search!.copyWith(
                                     name: searchEditController.text.toString(),

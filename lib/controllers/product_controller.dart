@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/controllers/product_repository.dart';
 import 'package:shop_app/controllers/search_controller.dart';
@@ -64,6 +65,7 @@ class AllProducts extends GetxController {
   }
 
   loadFoundedProducts(SearchModel searchModel) {
+    debugPrint(searchModel.toString());
     foundedProducts.addAll(products.where((element) =>
         (element.title.contains(searchModel.name)) &&
         (searchModel.categories.contains(element.categoryId))));
