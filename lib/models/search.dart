@@ -5,7 +5,7 @@ import 'package:shop_app/models/category.dart';
 
 class SearchModel {
   String name;
-  List<CategoryModel> categories;
+  List<String> categories;
   SearchModel({
     required this.name,
     required this.categories,
@@ -13,7 +13,7 @@ class SearchModel {
 
   SearchModel copyWith({
     String? name,
-    List<CategoryModel>? categories,
+    List<String>? categories,
   }) {
     return SearchModel(
       name: name ?? this.name,
@@ -31,7 +31,7 @@ class SearchModel {
   factory SearchModel.fromMap(Map<String, dynamic> map) {
     return SearchModel(
       name: map['name'] ?? '',
-      categories: List<CategoryModel>.from(map['categories']),
+      categories: List<String>.from(map['categories']),
     );
   }
 

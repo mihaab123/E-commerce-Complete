@@ -29,7 +29,7 @@ class ProductsScreen extends StatelessWidget {
           ),
           Obx(() {
             return Text(
-              "${_productController.products.length} " + "CT_items".tr,
+              "${_productController.foundedProducts.length} " + "CT_items".tr,
               style: Theme.of(context).textTheme.caption,
             );
           }),

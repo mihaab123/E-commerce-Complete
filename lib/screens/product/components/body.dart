@@ -15,10 +15,11 @@ class Body extends StatelessWidget {
         padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
         child: ListView.builder(
-          itemCount: _productController.products.length,
+          itemCount: _productController.foundedProducts.length,
           itemBuilder: (context, index) => Padding(
             padding: EdgeInsets.symmetric(vertical: 10),
-            child: ProductCard(product: _productController.products[index]),
+            child:
+                ProductCard(product: _productController.foundedProducts[index]),
           ),
         ),
       );

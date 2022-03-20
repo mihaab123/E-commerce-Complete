@@ -6,7 +6,8 @@ import 'icon_btn_with_counter.dart';
 import 'search_field.dart';
 
 class HomeHeader extends StatelessWidget {
-  const HomeHeader({
+  TextEditingController searchEditController = TextEditingController();
+  HomeHeader({
     Key? key,
   }) : super(key: key);
 
@@ -18,7 +19,7 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SearchField(),
+          SearchField(onChange: (_) {}, controller: searchEditController),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
             press: () => Navigator.pushNamed(context, CartScreen.routeName),

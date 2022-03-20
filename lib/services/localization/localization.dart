@@ -28,6 +28,7 @@ class LocalizationService extends Translations {
           'BTN_see_more_detail': 'See More Detail',
           'BTN_checkout': 'Check Out',
           'BTN_logout': 'Log Out',
+          'BTN_apply': 'Apply',
           //splash
           'SP_title': 'Market Place',
           'SP_firstpage': 'Welcome to MarketPlace, Let’s shop!',
@@ -88,6 +89,7 @@ class LocalizationService extends Translations {
           'FV_title': 'Your Favourite',
           // product
           'PR_title': 'All Products',
+          'PR_categories_title': 'Categories',
           // settings
           'ST_title': 'Settings',
           // cart
@@ -110,6 +112,7 @@ class LocalizationService extends Translations {
           'BTN_see_more_detail': 'Узнать подробнее',
           'BTN_checkout': 'Проверить',
           'BTN_logout': 'Выйти',
+          'BTN_apply': 'Применить',
           //splash
           'SP_title': 'Market Place',
           'SP_firstpage':
@@ -171,6 +174,7 @@ class LocalizationService extends Translations {
           'FV_title': 'Сохраненные',
           // product
           'PR_title': 'Все товары',
+          'PR_categories_title': 'Категории',
           // settings
           'ST_title': 'Настройки',
           // cart

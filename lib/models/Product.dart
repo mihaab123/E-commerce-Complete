@@ -8,6 +8,7 @@ class Product {
   String? uuid;
   final String title;
   final String description;
+  final String categoryId;
   final List<String> images;
   final List<String> colors;
   final double rating;
@@ -19,6 +20,7 @@ class Product {
     String? uuid,
     required this.title,
     required this.description,
+    required this.categoryId,
     required this.images,
     required this.colors,
     this.rating = 0.0,
@@ -31,6 +33,7 @@ class Product {
     String? uuid,
     String? title,
     String? description,
+    String? categoryId,
     List<String>? images,
     List<String>? colors,
     double? rating,
@@ -42,6 +45,7 @@ class Product {
       uuid: uuid ?? this.uuid,
       title: title ?? this.title,
       description: description ?? this.description,
+      categoryId: categoryId ?? this.categoryId,
       images: images ?? this.images,
       colors: colors ?? this.colors,
       rating: rating ?? this.rating,
@@ -56,6 +60,7 @@ class Product {
       'uuid': uuid,
       'title': title,
       'description': description,
+      'categoryId': categoryId,
       'images': images,
       'colors': colors,
       'rating': rating,
@@ -70,6 +75,7 @@ class Product {
       uuid: map['uuid'] ?? 0,
       title: map['title'] ?? '',
       description: map['description'] ?? '',
+      categoryId: map['categoryId'] ?? '',
       images: List<String>.from(map['images']),
       colors: List<String>.from(map['colors']),
       rating: map['rating']?.toDouble() ?? 0.0,
@@ -86,7 +92,7 @@ class Product {
 
   @override
   String toString() {
-    return 'Product(uuid: $uuid, title: $title, description: $description, images: $images, colors: $colors, rating: $rating, price: $price, isFavourite: $isFavourite, isPopular: $isPopular)';
+    return 'Product(uuid: $uuid, title: $title, description: $description,categoryId: $categoryId, images: $images, colors: $colors, rating: $rating, price: $price, isFavourite: $isFavourite, isPopular: $isPopular)';
   }
 
   @override
@@ -97,6 +103,7 @@ class Product {
         other.uuid == uuid &&
         other.title == title &&
         other.description == description &&
+        other.categoryId == categoryId &&
         listEquals(other.images, images) &&
         listEquals(other.colors, colors) &&
         other.rating == rating &&
@@ -110,6 +117,7 @@ class Product {
     return uuid.hashCode ^
         title.hashCode ^
         description.hashCode ^
+        categoryId.hashCode ^
         images.hashCode ^
         colors.hashCode ^
         rating.hashCode ^
@@ -124,6 +132,7 @@ class Product {
 List<Product> demoProducts = [
   Product(
     uuid: "1",
+    categoryId: "",
     images: [
       "assets/images/ps4_console_white_1.png",
       "assets/images/ps4_console_white_2.png",
@@ -145,6 +154,7 @@ List<Product> demoProducts = [
   ),
   Product(
     uuid: "2",
+    categoryId: "",
     images: [
       "assets/images/Image Popular Product 2.png",
     ],
@@ -162,6 +172,7 @@ List<Product> demoProducts = [
   ),
   Product(
     uuid: "3",
+    categoryId: "",
     images: [
       "assets/images/glap.png",
     ],
@@ -180,6 +191,7 @@ List<Product> demoProducts = [
   ),
   Product(
     uuid: '4',
+    categoryId: "",
     images: [
       "assets/images/wireless headset.png",
     ],
