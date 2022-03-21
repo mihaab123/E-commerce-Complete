@@ -14,7 +14,8 @@ class AllProducts extends GetxController {
   RxBool loadingMore = false.obs;
   RxBool loadingMoreError = false.obs;
   int productsPerPage = 5;
-  final SearchController _searchController = Get.find<SearchController>();
+  SearchController _searchController = Get.put(SearchController());
+  Rxn<SearchModel> searchModel = Rxn<SearchModel>();
 
   AllProducts({
     required this.productsRepo,
@@ -26,10 +27,14 @@ class AllProducts extends GetxController {
     /*for (Product product in demoProducts) {
       ProductRepository().addProduct(product: product);
     }*/
-    _searchController.obs.listenAndPump((value) {
-      loadFoundedProducts(value.search!);
+    searchModel.value = _searchController.search;
+    _searchController.addListener(() {
+      searchModel.value = _searchController.search;
     });
     initialLoad();
+    searchModel.listenAndPump((event) {
+      loadFoundedProducts(event!);
+    });
   }
 
   initialLoad() async {
@@ -66,8 +71,8 @@ class AllProducts extends GetxController {
 
   loadFoundedProducts(SearchModel searchModel) {
     debugPrint(searchModel.toString());
-    foundedProducts.addAll(products.where((element) =>
-        (element.title.contains(searchModel.name)) &&
-        (searchModel.categories.contains(element.categoryId))));
+    foundedProducts.value = products.where((element) =>
+        //      (element.title.contains(searchModel.name)) &&
+        (searchModel.categories.contains(element.categoryId))).toList();
   }
 }

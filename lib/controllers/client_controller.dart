@@ -160,7 +160,7 @@ class ClientController extends GetxController {
     clientLoading.value = false;
 
     print(_client);
-    cartCount.value = getCartCount();
+    if (client != null) cartCount.value = getCartCount();
     init.value = true;
   }
 

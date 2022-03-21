@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/models/search.dart';
 
@@ -19,6 +20,7 @@ class SearchController extends GetxController {
 
   Future setSearchData({required SearchModel newSearch}) async {
     search = newSearch;
+    debugPrint(search.toString());
     update();
   }
 }
